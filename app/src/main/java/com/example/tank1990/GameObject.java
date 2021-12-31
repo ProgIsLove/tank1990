@@ -1,5 +1,6 @@
 package com.example.tank1990;
 
+import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 
@@ -12,7 +13,7 @@ public abstract class GameObject {
     private int speedY;
     private int direction;
 
-    public GameObject(int x, int y, ID id, int direction) {
+    public GameObject(Context context, int x, int y, ID id, int direction) {
         this(x,y,id);
         this.direction = direction;
     }
