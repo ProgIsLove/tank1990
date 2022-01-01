@@ -77,4 +77,8 @@ public abstract class GameObject {
     public void setDirection(int direction) {
         this.direction = direction;
     }
+
+    public Context getContext() {
+        return context;
+    }
 }

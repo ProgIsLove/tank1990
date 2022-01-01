@@ -57,6 +57,13 @@ public class Enemy extends GameObject{
             default:
                 throw new IllegalArgumentException("Unexpected value: " + getDirection());
         }
+        if (timerShoot <= 0) {
+            handler.addObject(new EnemyBullet(getContext(), getX() + gameConstant.getBulletSize() / 2,
+                    getY() + gameConstant.getBulletSize() / 2, ID.EnemyBullet, getDirection(),
+                    handler, gameConstant));
+            timerShoot = rnd.nextInt(gameConstant.getTimerShoot());
+        } else
+            timerShoot--;
 
         collision();
     }

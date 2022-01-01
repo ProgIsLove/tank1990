@@ -60,12 +60,14 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
         super.draw(canvas);
 
         performance.draw(canvas);
+        handler.draw(canvas);
         player.draw(canvas);
         enemy.draw(canvas);
     }
 
     public void update() {
 
+        handler.update();
         player.update();
         enemy.update();
 
