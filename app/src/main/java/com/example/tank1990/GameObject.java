@@ -12,16 +12,18 @@ public abstract class GameObject {
     private int speedX;
     private int speedY;
     private int direction;
+    private Context context;
 
     public GameObject(Context context, int x, int y, ID id, int direction) {
-        this(x,y,id);
+        this(context,x,y,id);
         this.direction = direction;
     }
 
-    public GameObject(int x, int y, ID id) {
+    public GameObject(Context context, int x, int y, ID id) {
         this.x = x;
         this.y = y;
         this.id = id;
+        this.context = context;
     }
 
     public abstract void update();
