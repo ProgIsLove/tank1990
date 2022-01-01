@@ -12,14 +12,18 @@ public class Enemy extends GameObject{
     private Handler handler;
     private GameConstant gameConstant;
     private SpriteSheet spriteSheet;
+    private Spawner spawner;
+    private Hud hud;
     private int timerShoot;
 
     public Enemy(Context context, int x, int y, ID id, int direction, Handler handler,
-                 GameConstant gameConstant) {
+                 GameConstant gameConstant, Spawner spawner, Hud hud) {
         super(context, x, y, id, direction);
 
         this.handler = handler;
         this.gameConstant = gameConstant;
+        this.spawner = spawner;
+        this.hud = hud;
         this.spriteSheet = new SpriteSheet(context);
 
         timerShoot = rnd.nextInt(gameConstant.getTimerShoot());
@@ -60,7 +64,7 @@ public class Enemy extends GameObject{
         if (timerShoot <= 0) {
             handler.addObject(new EnemyBullet(getContext(), getX() + gameConstant.getBulletSize() / 2,
                     getY() + gameConstant.getBulletSize() / 2, ID.EnemyBullet, getDirection(),
-                    handler, gameConstant));
+                    handler, gameConstant, spawner, hud));
             timerShoot = rnd.nextInt(gameConstant.getTimerShoot());
         } else
             timerShoot--;

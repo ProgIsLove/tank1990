@@ -9,14 +9,18 @@ public class EnemyBullet extends GameObject {
     private Handler handler;
     private GameConstant gameConstant;
     private SpriteSheet spriteSheet;
+    private Hud hud;
+    private Spawner spawner;
 
 
     public EnemyBullet(Context context, int x, int y, ID id, int direction, Handler handler,
-                       GameConstant gameConstant) {
+                       GameConstant gameConstant, Spawner spawner, Hud hud) {
         super(context, x, y, id, direction);
         this.handler = handler;
         this.gameConstant = gameConstant;
         this.spriteSheet = new SpriteSheet(context);
+        this.spawner = spawner;
+        this.hud = hud;
     }
 
     @Override
@@ -71,8 +75,8 @@ public class EnemyBullet extends GameObject {
     public void collision() {
         for (int i = 0; i < handler.object.size(); i++) {
             GameObject tempObject = handler.object.get(i);
-//            int tempLive = hud.getLive();
-//            int tempCrownLive = hud.getCrownLive();
+            int tempLive = hud.getLive();
+            int tempCrownLive = hud.getCrownLive();
 
             if (tempObject.getId() == ID.Bullet || tempObject.getId() == ID.Block_brick_wall) {
                 if (getBounds().intersect(tempObject.getBounds())) {
@@ -84,21 +88,21 @@ public class EnemyBullet extends GameObject {
                 if (getBounds().intersect(tempObject.getBounds())) {
                     handler.removeObject(this);
                     handler.removeObject(tempObject);
-//                    tempLive -= 1;
-//                    hud.setLive(tempLive);
-//                    if(hud.getLive() != 0 || hud.getCrownLive() != 0) {
-//                        spawner.nextLive();
-//                    }
+                    tempLive -= 1;
+                    hud.setLive(tempLive);
+                    if(hud.getLive() != 0 || hud.getCrownLive() != 0) {
+                        spawner.nextLive();
+                    }
                 }
             }
             if (tempObject.getId() == ID.Golden_crown) {
                 if (getBounds().intersect(tempObject.getBounds())) {
                     handler.removeObject(this);
                     handler.removeObject(tempObject);
-//                    tempCrownLive -= 1;
-//                    tempLive -= 1;
-//                    hud.setCrownLive(tempCrownLive);
-//                    hud.setLive(tempLive);
+                    tempCrownLive -= 1;
+                    tempLive -= 1;
+                    hud.setCrownLive(tempCrownLive);
+                    hud.setLive(tempLive);
                 }
             }
             if (tempObject.getId() == ID.Block_steel_wall || tempObject.getId() == ID.Block_sea_wall) {

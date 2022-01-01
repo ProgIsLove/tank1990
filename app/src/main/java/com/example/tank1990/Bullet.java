@@ -9,14 +9,16 @@ public class Bullet extends GameObject{
     private Handler handler;
     private GameConstant gameConstant;
     private SpriteSheet spriteSheet;
+    private Hud hud;
 
 
     public Bullet(Context context, int x, int y, ID id, int direction, Handler handler,
-                  GameConstant gameConstant) {
+                  GameConstant gameConstant, Hud hud) {
         super(context, x, y, id, direction);
         this.handler = handler;
         this.gameConstant = gameConstant;
         this.spriteSheet = new SpriteSheet(context);
+        this.hud = hud;
     }
 
     @Override
@@ -79,14 +81,14 @@ public class Bullet extends GameObject{
             }
             if(tempObject.getId() == ID.Enemy) {
                 if (getBounds().intersect(tempObject.getBounds())) {
-//                    int tempCounter = hud.getEnemyCount();
-//                    int tempScore = hud.getScore();
+                    int tempCounter = hud.getEnemyCount();
+                    int tempScore = hud.getScore();
                     handler.removeObject(this);
                     handler.removeObject(tempObject);
-//                    tempCounter -= 1;
-//                    tempScore += gameCon.getScore();
-//                    hud.setEnemyCount(tempCounter);
-//                    hud.setScore(tempScore);
+                    tempCounter -= 1;
+                    tempScore += gameConstant.getScore();
+                    hud.setEnemyCount(tempCounter);
+                    hud.setScore(tempScore);
                 }
             }
 
