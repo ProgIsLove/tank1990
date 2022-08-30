@@ -11,10 +11,11 @@ public class Spawner {
     private int respawnTime;
     private Context context;
 
-    public Spawner(Handler handler, GameConstant gameCon, Context context) {
+    public Spawner(Handler handler, GameConstant gameCon, Context context, Hud hud) {
         this.handler = handler;
         this.gameCon = gameCon;
         this.context = context;
+        this.hud = hud;
     }
 
     public void nextEnemy(int blockSpaceX, int blockSpaceY) {
