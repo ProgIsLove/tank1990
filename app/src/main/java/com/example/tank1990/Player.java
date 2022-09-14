@@ -2,6 +2,8 @@ package com.example.tank1990;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.Rect;
 
 public class Player extends GameObject{
@@ -38,23 +40,23 @@ public class Player extends GameObject{
     public void draw(Canvas canvas) {
 
         if(getDirection() == 1) {
-            Sprite spriteUp = spriteSheet.getPlayerSprite(125, 0, 150, 25);
+            Sprite spriteUp = spriteSheet.getSprite(125, 0, 150, 25);
             spriteUp.draw(canvas, getX(), getY());
         } else if(getDirection() == 2) {
-            Sprite spriteRight = spriteSheet.getPlayerSprite(25, 25, 50, 50);
+            Sprite spriteRight = spriteSheet.getSprite(25, 25, 50, 50);
             spriteRight.draw(canvas, getX(), getY());
         } else if(getDirection() == 3) {
-            Sprite spriteLeft = spriteSheet.getPlayerSprite(0, 25, 25, 50);
+            Sprite spriteLeft = spriteSheet.getSprite(0, 25, 25, 50);
             spriteLeft.draw(canvas, getX(), getY());
         } else if(getDirection() == 4) {
-            Sprite spriteDown = spriteSheet.getPlayerSprite(50, 25, 75, 50);
+            Sprite spriteDown = spriteSheet.getSprite(50, 25, 75, 50);
             spriteDown.draw(canvas, getX(), getY());
         }
     }
 
     @Override
     public Rect getBounds() {
-        return new Rect(getX(), getY(), gameCon.getTankSize(), gameCon.getTankSize());
+        return new Rect(getX(), getY(), getX() + gameCon.getTankSize(), getY() + gameCon.getTankSize());
     }
 
     public void collision() {

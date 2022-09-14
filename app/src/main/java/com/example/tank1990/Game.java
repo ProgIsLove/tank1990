@@ -11,7 +11,6 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
 
     private GameLoop gameLoop;
     private Performance performance;
-    private Player player;
     private Handler handler;
     private GameConstant gameConstant;
     private Hud hud;
@@ -32,11 +31,9 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
         handler = new Handler();
         gameConstant = new GameConstant();
         hud = new Hud(getContext());
-        player = new Player(getContext(),500, 500, ID.Player, 4, handler, gameConstant);
         spawner = new Spawner(handler, gameConstant, getContext(), hud);
         level = new Level();
         map = new Map(getContext(), handler, gameConstant, spawner,  level);
-
 
         setFocusable(true);
     }
@@ -67,16 +64,12 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
 
         performance.draw(canvas);
         handler.draw(canvas);
-        player.draw(canvas);
         hud.draw(canvas);
         map.draw();
     }
 
     public void update() {
-
         handler.update();
-        player.update();
-
     }
 
     public void pause() {

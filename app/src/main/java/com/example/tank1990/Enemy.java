@@ -75,24 +75,24 @@ public class Enemy extends GameObject{
     @Override
     public void draw(Canvas canvas) {
         if (getDirection() == 1) {
-            Sprite spriteUp = spriteSheet.getPlayerSprite(75, 25, 100, 50);
+            Sprite spriteUp = spriteSheet.getSprite(75, 25, 100, 50);
             spriteUp.draw(canvas, getX(), getY());
         } else if (getDirection() == 2) {
-            Sprite spriteLeft = spriteSheet.getPlayerSprite(100, 25, 125, 50);
-            spriteLeft.draw(canvas, getX(), getY());
-        } else if (getDirection() == 3) {
-            Sprite spriteRight = spriteSheet.getPlayerSprite(125, 25, 150, 50);
-            spriteRight.draw(canvas, getX(), getY());
-        } else if (getDirection() == 4) {
-            Sprite spriteDown = spriteSheet.getPlayerSprite(0, 50, 25, 75);
+            Sprite spriteDown = spriteSheet.getSprite(0, 50, 25, 75);
             spriteDown.draw(canvas, getX(), getY());
+        } else if (getDirection() == 3) {
+            Sprite spriteLeft = spriteSheet.getSprite(100, 25, 125, 50);
+            spriteLeft.draw(canvas, getX(), getY());
+        } else if (getDirection() == 4) {
+            Sprite spriteRight = spriteSheet.getSprite(125, 25, 150, 50);
+            spriteRight.draw(canvas, getX(), getY());
         }
 
     }
 
     @Override
     public Rect getBounds() {
-        return new Rect(getX(), getY(), gameConstant.getTankSize(), gameConstant.getTankSize());
+        return new Rect(getX(), getY(), getX() + gameConstant.getTankSize(), getY() + gameConstant.getTankSize());
     }
 
     public void collision() {

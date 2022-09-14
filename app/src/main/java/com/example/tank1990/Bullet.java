@@ -60,13 +60,13 @@ public class Bullet extends GameObject{
 
     @Override
     public void draw(Canvas canvas) {
-        Sprite spriteBullet = spriteSheet.getPlayerSprite(125, 0, 150, 25);
+        Sprite spriteBullet = spriteSheet.getSprite(125, 0, 150, 25);
         spriteBullet.draw(canvas, getX(), getY());
     }
 
     @Override
     public Rect getBounds() {
-        return new Rect(getX(), getY(), gameConstant.getBulletSize(), gameConstant.getBulletSize());
+        return new Rect(getX(), getY(), getX() + gameConstant.getBulletSize(), getY() + gameConstant.getBulletSize());
     }
 
     public void collision() {

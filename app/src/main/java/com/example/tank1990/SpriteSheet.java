@@ -16,7 +16,7 @@ public class SpriteSheet {
 
     }
 
-    public Sprite getPlayerSprite(int left, int top, int right, int bottom) {
+    public Sprite getSprite(int left, int top, int right, int bottom) {
         return new Sprite(this, new Rect(left, top, right, bottom));
     }
 
