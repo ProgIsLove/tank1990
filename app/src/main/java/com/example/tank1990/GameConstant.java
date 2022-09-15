@@ -4,8 +4,8 @@ public class GameConstant {
 
     private final int SPEED = 2;
     private final int BULLET_SPEED = 3;
-    private final int BLOCK_SIZE = 25;
-    private final int TANK_SIZE = 16;
+    private final int BLOCK_SIZE = 50;
+    private final int TANK_SIZE = 32;
     private final int BULLET_SIZE = 6;
     private final int TIMER_SHOOT = 70;
     private final int RESPAWN_TIME = 100;

@@ -47,12 +47,15 @@ public class Map {
         this.isDraw = isDraw;
     }
 
-    public void draw() {
-        fillGameLvl(blockSpaceX, blockSpaceY, blockValue);
-        spawnEnemy(blockValue);
+    public void draw(GameDisplay gameDisplay) {
+        fillGameLvl(
+                (int) gameDisplay.gameToDisplayCoordinatesX((float) blockSpaceX),
+                (int) gameDisplay.gameToDisplayCoordinatesY((float) blockSpaceY),
+                blockValue, gameDisplay);
+        spawnEnemy(blockValue, gameDisplay);
     }
 
-    public void fillGameLvl(int blockSpaceX, int blockSpaceY, int blockValue) {
+    private void fillGameLvl(int blockSpaceX, int blockSpaceY, int blockValue, GameDisplay gameDisplay) {
 
         gameField = level.levelOne();
 
@@ -64,11 +67,11 @@ public class Map {
 
                     switch (blockValue) {
                         case 1: {
-                            handler.addObject(new Block(context,0 + blockSpaceX, 0 + blockSpaceY, ID.Block_brick_wall, gameCon));
+                            handler.addObject(new Block(context,blockSpaceX, blockSpaceY, ID.Block_brick_wall, gameCon));
                             break;
                         }
                         case 2: {
-                            handler.addObject(new Block(context,0 + blockSpaceX, 0 + blockSpaceY, ID.Block_steel_wall, gameCon));
+                            handler.addObject(new Block(context,blockSpaceX, blockSpaceY, ID.Block_steel_wall, gameCon));
                             break;
                         }
                         case 3: {
@@ -89,13 +92,13 @@ public class Map {
                 }
                 setBlockY(gameCon.getBlockSize());
                 blockSpaceY += getBlockY();
-                blockSpaceX = 0;
+                blockSpaceX = (int) gameDisplay.gameToDisplayCoordinatesX((float) 0);
             }
             isDraw = true;
         }
     }
 
-    public void spawnEnemy(int blockValue) {
+    private void spawnEnemy(int blockValue, GameDisplay gameDisplay) {
         gameField = level.levelOne();
         int key;
 
@@ -114,8 +117,10 @@ public class Map {
         }
 
         if(blockValue == 7) {
-            spawner.nextEnemy(375, 50);
+            spawner.nextEnemy((int) gameDisplay.gameToDisplayCoordinatesX((float) 775),
+                    (int) gameDisplay.gameToDisplayCoordinatesY((float) 50));
         }else
-            spawner.nextEnemy(125, 50);
+            spawner.nextEnemy((int) gameDisplay.gameToDisplayCoordinatesX((float) 225),
+                    (int) gameDisplay.gameToDisplayCoordinatesY((float) 50));
     }
 }
