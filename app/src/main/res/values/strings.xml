@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">tank1990</string>
+    <string name="play_game">PLAY GAME</string>
+    <string name="tank_1990">Tank 1990</string>
+    <string name="high_scores">HIGH SCORES</string>
+    <string name="about">ABOUT</string>
 </resources>
