@@ -6,7 +6,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 
-public class Player extends GameObject{
+public class Player extends GameObject {
 
     private Handler handler;
     private GameConstant gameCon;

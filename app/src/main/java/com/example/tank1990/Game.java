@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.DisplayMetrics;
+import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
@@ -20,6 +21,10 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
     private Spawner spawner;
     private Level level;
     private final GameDisplay gameDisplay;
+    private final Button buttonUp;
+    private final Button buttonDown;
+    private final Button buttonLeft;
+    private final Button buttonRight;
 
     public Game(Context context) {
         super(context);
@@ -36,6 +41,10 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
         spawner = new Spawner(handler, gameConstant, getContext(), hud);
         level = new Level();
         map = new Map(getContext(), handler, gameConstant, spawner,  level);
+        buttonUp = new Button(100, 700, gameConstant);
+        buttonDown = new Button(100, 900, gameConstant);
+        buttonLeft = new Button(0, 800, gameConstant);
+        buttonRight = new Button(200, 800, gameConstant);
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
 
@@ -45,6 +54,63 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
         setFocusable(true);
     }
 
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        switch (event.getActionMasked()) {
+            case MotionEvent.ACTION_DOWN:
+                for (int i = 0; i < handler.object.size(); i++) {
+                    GameObject tempObject = handler.object.get(i);
+
+                    if (tempObject.getId() == ID.Player) {
+                        if (buttonUp.rect.contains((int) event.getX(), (int) event.getY())) {
+                            tempObject.setSpeedY(-gameConstant.getSpeed());
+                            tempObject.setDirection(1);
+                            return true;
+                        }
+                        if (buttonDown.rect.contains((int) event.getX(), (int) event.getY())) {
+                            tempObject.setSpeedY(gameConstant.getSpeed());
+                            tempObject.setDirection(4);
+                            return true;
+                        }
+                        if (buttonLeft.rect.contains((int) event.getX(), (int) event.getY())) {
+                            tempObject.setSpeedX(-gameConstant.getSpeed());
+                            tempObject.setDirection(3);
+                            return true;
+                        }
+                        if (buttonRight.rect.contains((int) event.getX(), (int) event.getY())) {
+                            tempObject.setSpeedX(gameConstant.getSpeed());
+                            tempObject.setDirection(2);
+                            return true;
+                        }
+                    }
+                }
+            case MotionEvent.ACTION_UP:
+                for (int i = 0; i < handler.object.size(); i++) {
+                    GameObject tempObject = handler.object.get(i);
+
+                    if (tempObject.getId() == ID.Player) {
+                        if (buttonUp.rect.contains((int) event.getX(), (int) event.getY())) {
+                            tempObject.setSpeedY(0);
+                            return true;
+                        }
+                        if (buttonDown.rect.contains((int) event.getX(), (int) event.getY())) {
+                            tempObject.setSpeedY(0);
+                            return true;
+                        }
+                        if (buttonLeft.rect.contains((int) event.getX(), (int) event.getY())) {
+                            tempObject.setSpeedX(0);
+                            return true;
+                        }
+                        if (buttonRight.rect.contains((int) event.getX(), (int) event.getY())) {
+                            tempObject.setSpeedX(0);
+                            return true;
+                        }
+                    }
+                }
+        }
+
+        return super.onTouchEvent(event);
+    }
 
     @Override
     public void surfaceCreated(@NonNull SurfaceHolder surfaceHolder) {
@@ -73,6 +139,10 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
         handler.draw(canvas);
         hud.draw(canvas, gameDisplay);
         map.draw(gameDisplay);
+        buttonUp.draw(canvas);
+        buttonDown.draw(canvas);
+        buttonLeft.draw(canvas);
+        buttonRight.draw(canvas);
     }
 
     public void update() {
