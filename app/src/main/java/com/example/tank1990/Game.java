@@ -13,17 +13,16 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
 
     private GameLoop gameLoop;
     private Performance performance;
-    private Handler handler;
+    private final Handler handler;
     private GameConstant gameConstant;
-    private Hud hud;
-    private Map map;
+    private final Hud hud;
+    private final Map map;
     private Spawner spawner;
     private Level level;
-    private GameDisplay gameDisplay;
+    private final GameDisplay gameDisplay;
 
     public Game(Context context) {
         super(context);
-
 
         SurfaceHolder surfaceHolder = getHolder();
         surfaceHolder.addCallback(this);
@@ -42,8 +41,6 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
 
         ((Activity) getContext()).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         gameDisplay = new GameDisplay(displayMetrics.widthPixels, displayMetrics.heightPixels, map, gameConstant);
-        System.out.println(displayMetrics.widthPixels);
-        System.out.println(displayMetrics.heightPixels);
 
         setFocusable(true);
     }
@@ -72,9 +69,9 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
     public void draw(Canvas canvas) {
         super.draw(canvas);
 
-        performance.draw(canvas);
+        //performance.draw(canvas);
         handler.draw(canvas);
-        hud.draw(canvas);
+        hud.draw(canvas, gameDisplay);
         map.draw(gameDisplay);
     }
 

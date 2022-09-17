@@ -1,7 +1,6 @@
 package com.example.tank1990;
 
 import android.content.Context;
-import android.graphics.Canvas;
 
 import java.util.Random;
 
@@ -49,8 +48,8 @@ public class Map {
 
     public void draw(GameDisplay gameDisplay) {
         fillGameLvl(
-                (int) gameDisplay.gameToDisplayCoordinatesX((float) blockSpaceX),
-                (int) gameDisplay.gameToDisplayCoordinatesY((float) blockSpaceY),
+                (int) gameDisplay.mapToDisplayCoordinatesX((float) blockSpaceX),
+                (int) gameDisplay.mapToDisplayCoordinatesY((float) blockSpaceY),
                 blockValue, gameDisplay);
         spawnEnemy(blockValue, gameDisplay);
     }
@@ -92,7 +91,7 @@ public class Map {
                 }
                 setBlockY(gameCon.getBlockSize());
                 blockSpaceY += getBlockY();
-                blockSpaceX = (int) gameDisplay.gameToDisplayCoordinatesX((float) 0);
+                blockSpaceX = (int) gameDisplay.mapToDisplayCoordinatesX((float) 0);
             }
             isDraw = true;
         }
@@ -117,10 +116,10 @@ public class Map {
         }
 
         if(blockValue == 7) {
-            spawner.nextEnemy((int) gameDisplay.gameToDisplayCoordinatesX((float) 775),
-                    (int) gameDisplay.gameToDisplayCoordinatesY((float) 50));
+            spawner.nextEnemy((int) gameDisplay.mapToDisplayCoordinatesX((float) 775),
+                    (int) gameDisplay.mapToDisplayCoordinatesY((float) 50));
         }else
-            spawner.nextEnemy((int) gameDisplay.gameToDisplayCoordinatesX((float) 225),
-                    (int) gameDisplay.gameToDisplayCoordinatesY((float) 50));
+            spawner.nextEnemy((int) gameDisplay.mapToDisplayCoordinatesX((float) 225),
+                    (int) gameDisplay.mapToDisplayCoordinatesY((float) 50));
     }
 }

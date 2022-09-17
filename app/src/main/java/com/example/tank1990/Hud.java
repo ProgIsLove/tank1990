@@ -3,44 +3,48 @@ package com.example.tank1990;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.RectF;
 
 import androidx.core.content.ContextCompat;
 
 public class Hud {
 
     private int enemyCount = 0;
-    private int live = 5;
+    private int live = 3;
     private int crownLive = 1;
     private int score = 0;
-    private int level = 1;
-    private final int space = 20;
-    private Context context;
+    private final int space = 110;
+    private final Context context;
 
     public Hud(Context context) {
         this.context = context;
     }
 
-    public void draw(Canvas canvas) {
+    public void draw(Canvas canvas, GameDisplay gameDisplay) {
         Paint paint = new Paint();
         int color = ContextCompat.getColor(context, R.color.white);
         paint.setColor(color);
-        paint.setTextSize(80);
-//        g.drawString("Lives ", 30, gameCon.getHeight()-80);
-        canvas.drawText("Lives ", 700, 100, paint);
-//        g.drawString("Score ", gameCon.getWidth()/2-80, gameCon.getHeight()-80);
-//        g.drawString("" + score, gameCon.getWidth()/2-80, gameCon.getHeight()-50);
-//        g.drawString("Level ", gameCon.getWidth()-80, 50);
-//        g.drawString("" + level, gameCon.getWidth()-70, 75);
-//        g.drawString("Enemy ", gameCon.getWidth()-85, 150);
+        paint.setTextSize(60);
+        canvas.drawText("Lives ", (float) gameDisplay.HUDToDisplayCoordinatesX(-800),
+                (float) gameDisplay.HUDToDisplayCoordinatesY(-800), paint);
+        canvas.drawText("Score " + score, (float) gameDisplay.HUDToDisplayCoordinatesX(-200),
+                (float) gameDisplay.HUDToDisplayCoordinatesY(-800), paint);
+        canvas.drawText("Enemy ", (float) gameDisplay.HUDToDisplayCoordinatesX(600),
+                (float) gameDisplay.HUDToDisplayCoordinatesY(-800), paint);
 
+        RectF oval;
         for(int i = 0; i < enemyCount; i++) {
-//            g.setColor(Color.RED);
-//            g.fillOval(gameCon.getWidth()-70, 170 + i * space, 10, 10);
+            oval = new RectF(1630, 250 + (i * space), 1530, 150 + (i * space));
+            color = ContextCompat.getColor(context, R.color.enemy);
+            paint.setColor(color);
+            canvas.drawOval(oval, paint);
         }
 
         for(int i = 0; i < live; i++) {
-//            g.setColor(Color.green);
-//            g.fillOval(10 + i*space, gameCon.getHeight()-60, 10, 10);
+            oval = new RectF(100, 250 + (i * space), 200, 150 + (i * space));
+            color = ContextCompat.getColor(context, R.color.live);
+            paint.setColor(color);
+            canvas.drawOval(oval, paint);
         }
     }
 
@@ -74,13 +78,5 @@ public class Hud {
 
     public void setScore(int score) {
         this.score = score;
-    }
-
-    public int getLevel() {
-        return level;
-    }
-
-    public void setLevel(int level) {
-        this.level = level;
     }
 }
