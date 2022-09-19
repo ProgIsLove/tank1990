@@ -10,6 +10,7 @@ public class GameConstant {
     private final int TIMER_SHOOT = 70;
     private final int RESPAWN_TIME = 100;
     private final int SCORE = 200;
+    private final int BUTTON_SIZE = 100;
 
     public int getSpeed() {
         return SPEED;
@@ -41,5 +42,9 @@ public class GameConstant {
 
     public int getScore() {
         return SCORE;
+    }
+
+    public int getButtonSize() {
+        return BUTTON_SIZE;
     }
 }

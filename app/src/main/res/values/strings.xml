@@ -3,6 +3,9 @@
     <string name="play_game">PLAY GAME</string>
     <string name="tank_1990">Tank 1990</string>
     <string name="high_scores">HIGH SCORES</string>
+    <string name="end">GAME OVER</string>
     <string name="about">ABOUT</string>
     <string name="back">Back</string>
+    <string name="play_again">Play Again</string>
+    <string name="exit_game">Exit Game</string>
 </resources>

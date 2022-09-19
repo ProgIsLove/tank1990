@@ -76,7 +76,6 @@ public class EnemyBullet extends GameObject {
         for (int i = 0; i < handler.object.size(); i++) {
             GameObject tempObject = handler.object.get(i);
             int tempLive = hud.getLive();
-            int tempCrownLive = hud.getCrownLive();
 
             if (tempObject.getId() == ID.Bullet || tempObject.getId() == ID.Block_brick_wall) {
                 if (getBounds().intersect(tempObject.getBounds())) {
@@ -90,7 +89,7 @@ public class EnemyBullet extends GameObject {
                     handler.removeObject(tempObject);
                     tempLive -= 1;
                     hud.setLive(tempLive);
-                    if(hud.getLive() != 0 || hud.getCrownLive() != 0) {
+                    if(hud.getLive() != 0 && hud.getCrownLive() != 0) {
                         spawner.nextLive();
                     }
                 }
@@ -99,10 +98,7 @@ public class EnemyBullet extends GameObject {
                 if (getBounds().intersect(tempObject.getBounds())) {
                     handler.removeObject(this);
                     handler.removeObject(tempObject);
-                    tempCrownLive -= 1;
-                    tempLive -= 1;
-                    hud.setCrownLive(tempCrownLive);
-                    hud.setLive(tempLive);
+                    hud.setCrownLive(0);
                 }
             }
             if (tempObject.getId() == ID.Block_steel_wall || tempObject.getId() == ID.Block_sea_wall) {

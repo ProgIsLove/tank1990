@@ -14,13 +14,11 @@ public class Hud {
     private int crownLive = 1;
     private int score = 0;
     private final int space = 110;
-    private final Context context;
 
-    public Hud(Context context) {
-        this.context = context;
+    public Hud() {
     }
 
-    public void draw(Canvas canvas, GameDisplay gameDisplay) {
+    public void draw(Canvas canvas, GameDisplay gameDisplay, Context context) {
         Paint paint = new Paint();
         int color = ContextCompat.getColor(context, R.color.white);
         paint.setColor(color);

@@ -31,7 +31,7 @@ public class Spawner {
     }
 
     public void nextLive() {
-        handler.addObject(new Player(context, 175, 325,
+        handler.addObject(new Player(context, 735, 825,
                 ID.Player, 1, handler, gameCon));
     }
 }

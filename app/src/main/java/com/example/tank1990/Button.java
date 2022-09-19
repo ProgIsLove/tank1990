@@ -5,13 +5,13 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 
-import androidx.core.content.ContextCompat;
-
 public class Button {
 
     private int positionX;
     private int positionY;
     private GameConstant gameConstant;
+    private float radius;
+    private double circleButtonTouchDistance;
     public Rect rect;
     private Boolean isPressed = false;
 
@@ -20,7 +20,14 @@ public class Button {
         this.positionY = positionY;
         this.gameConstant = gameConstant;
 
-        rect = new Rect(positionX, positionY, positionX + 100, positionY + 100);
+        rect = new Rect(positionX, positionY, positionX + gameConstant.getButtonSize(),
+                positionY + gameConstant.getButtonSize());
+    }
+
+    public Button(int positionX, int positionY, float radius) {
+        this.positionX = positionX;
+        this.positionY = positionY;
+        this.radius = radius;
     }
 
     public void draw(Canvas canvas) {
@@ -28,6 +35,21 @@ public class Button {
         paint.setColor(Color.WHITE);
         paint.setStyle(Paint.Style.FILL_AND_STROKE);
         canvas.drawRect(rect, paint);
+    }
+
+    public void drawCircle(Canvas canvas) {
+        Paint paint = new Paint();
+        paint.setColor(Color.WHITE);
+        paint.setStyle(Paint.Style.FILL);
+        canvas.drawCircle((float) positionX, (float) positionY, radius, paint);
+    }
+
+    public Boolean isCircleButtonPressed(double touchX, double touchY) {
+        circleButtonTouchDistance = Math.sqrt(
+                Math.pow(positionX - touchX, 2) + Math.pow(positionY - touchY, 2)
+        );
+
+        return circleButtonTouchDistance < radius;
     }
 
     public Boolean getPressed() {

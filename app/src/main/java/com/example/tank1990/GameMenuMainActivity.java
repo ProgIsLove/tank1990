@@ -14,14 +14,14 @@ public class GameMenuMainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_game_main);
 
-        Button button = findViewById(R.id.btn_play);
-        button.setOnClickListener((View v) -> openGameActivity());
+        Button playBtn = findViewById(R.id.btn_play);
+        playBtn.setOnClickListener((View v) -> openGameActivity());
 
-        Button button2 = findViewById(R.id.btn_scores);
-        button2.setOnClickListener((View v) -> openHighScoreActivity());
+        Button scoreBtn = findViewById(R.id.btn_scores);
+        scoreBtn.setOnClickListener((View v) -> openHighScoreActivity());
 
-        Button button3 = findViewById(R.id.btn_about);
-        button3.setOnClickListener((View v) -> openAboutActivity());
+        Button aboutBtn = findViewById(R.id.btn_about);
+        aboutBtn.setOnClickListener((View v) -> openAboutActivity());
     }
 
     private void openGameActivity() {

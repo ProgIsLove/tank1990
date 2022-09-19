@@ -2,7 +2,10 @@ package com.example.tank1990;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Canvas;
+import android.os.Bundle;
+import android.os.Looper;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
@@ -25,6 +28,7 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
     private final Button buttonDown;
     private final Button buttonLeft;
     private final Button buttonRight;
+    private final Button buttonShot;
 
     public Game(Context context) {
         super(context);
@@ -37,7 +41,7 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
 
         handler = new Handler();
         gameConstant = new GameConstant();
-        hud = new Hud(getContext());
+        hud = new Hud();
         spawner = new Spawner(handler, gameConstant, getContext(), hud);
         level = new Level();
         map = new Map(getContext(), handler, gameConstant, spawner,  level);
@@ -45,6 +49,7 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
         buttonDown = new Button(100, 900, gameConstant);
         buttonLeft = new Button(0, 800, gameConstant);
         buttonRight = new Button(200, 800, gameConstant);
+        buttonShot = new Button(1580, 950, 70);
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
 
@@ -56,6 +61,9 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+
+        boolean isShooting = false;
+
         switch (event.getActionMasked()) {
             case MotionEvent.ACTION_DOWN:
                 for (int i = 0; i < handler.object.size(); i++) {
@@ -82,6 +90,13 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
                             tempObject.setDirection(2);
                             return true;
                         }
+                        if (buttonShot.isCircleButtonPressed(event.getX(), event.getY()) && !isShooting) {
+                            isShooting = true;
+                            handler.addObject(new Bullet(getContext(), tempObject.getX() + gameConstant.getBulletSize()/2,
+                                    tempObject.getY() + gameConstant.getBulletSize()/2, ID.Bullet, tempObject.getDirection(),
+                                    handler, gameConstant, hud));
+                            return true;
+                        }
                     }
                 }
             case MotionEvent.ACTION_UP:
@@ -103,6 +118,10 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
                         }
                         if (buttonRight.rect.contains((int) event.getX(), (int) event.getY())) {
                             tempObject.setSpeedX(0);
+                            return true;
+                        }
+                        if (buttonShot.isCircleButtonPressed(event.getX(), event.getY())) {
+                            isShooting = false;
                             return true;
                         }
                     }
@@ -137,16 +156,23 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
 
         //performance.draw(canvas);
         handler.draw(canvas);
-        hud.draw(canvas, gameDisplay);
+        hud.draw(canvas, gameDisplay, getContext());
         map.draw(gameDisplay);
         buttonUp.draw(canvas);
         buttonDown.draw(canvas);
         buttonLeft.draw(canvas);
         buttonRight.draw(canvas);
+        buttonShot.drawCircle(canvas);
     }
 
     public void update() {
         handler.update();
+
+        if (hud.getLive() == 0 || hud.getCrownLive() == 0) {
+            Intent intent = new Intent().setClass(getContext(), GameOverActivity.class);
+            intent.putExtra("Score", hud.getScore());
+            getContext().startActivity(intent);
+        }
     }
 
     public void pause() {

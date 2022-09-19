@@ -33,9 +33,9 @@ public class Bullet extends GameObject{
                 break;
             }
             case 2: {
-                int tempY = getY();
-                tempY += getSpeedY();
-                setY(tempY);
+                int tempX = getX();
+                tempX += getSpeedX();
+                setX(tempX);
                 break;
             }
             case 3: {
@@ -45,9 +45,9 @@ public class Bullet extends GameObject{
                 break;
             }
             case 4: {
-                int tempX = getX();
-                tempX += getSpeedX();
-                setX(tempX);
+                int tempY = getY();
+                tempY += getSpeedY();
+                setY(tempY);
                 break;
             }
             default:
@@ -55,12 +55,11 @@ public class Bullet extends GameObject{
         }
 
         collision();
-
     }
 
     @Override
     public void draw(Canvas canvas) {
-        Sprite spriteBullet = spriteSheet.getSprite(125, 0, 150, 25);
+        Sprite spriteBullet = spriteSheet.getSprite(75, 0, 100, 25);
         spriteBullet.draw(canvas, getX(), getY());
     }
 
