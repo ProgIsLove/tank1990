@@ -22,6 +22,9 @@ public class GameMenuMainActivity extends AppCompatActivity {
 
         Button aboutBtn = findViewById(R.id.btn_about);
         aboutBtn.setOnClickListener((View v) -> openAboutActivity());
+
+        Button endBtn = findViewById(R.id.btn_end);
+        endBtn.setOnClickListener((View v) -> finish());
     }
 
     private void openGameActivity() {

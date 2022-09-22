@@ -12,7 +12,7 @@ public class SpriteSheet {
 
         BitmapFactory.Options bitmapOptions = new BitmapFactory.Options();
         bitmapOptions.inScaled = false;
-        bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.sprite, bitmapOptions);
+        bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.spritesheettank, bitmapOptions);
 
     }
 

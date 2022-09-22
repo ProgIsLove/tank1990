@@ -9,7 +9,7 @@ public class Handler {
     LinkedList<GameObject> object = new LinkedList<>();
 
     public void update() {
-        for(int i=0; i<object.size(); i++) {
+        for(int i = 0; i < object.size(); i++) {
             GameObject tempObject = object.get(i);
 
             tempObject.update();
@@ -17,7 +17,7 @@ public class Handler {
     }
 
     public void draw(Canvas canvas) {
-        for(int i=0; i<object.size(); i++) {
+        for(int i = 0; i < object.size(); i++) {
             GameObject tempObject = object.get(i);
 
             tempObject.draw(canvas);

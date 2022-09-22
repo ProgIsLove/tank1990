@@ -63,7 +63,7 @@ public class EnemyBullet extends GameObject {
 
     @Override
     public void draw(Canvas canvas) {
-        Sprite spriteBullet = spriteSheet.getSprite(100, 0, 125, 25);
+        Sprite spriteBullet = spriteSheet.getSprite(200, 0, 250, 50);
         spriteBullet.draw(canvas, getX(), getY());
     }
 

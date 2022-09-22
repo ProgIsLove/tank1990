@@ -59,7 +59,7 @@ public class Bullet extends GameObject{
 
     @Override
     public void draw(Canvas canvas) {
-        Sprite spriteBullet = spriteSheet.getSprite(75, 0, 100, 25);
+        Sprite spriteBullet = spriteSheet.getSprite(150, 0, 200, 50);
         spriteBullet.draw(canvas, getX(), getY());
     }
 

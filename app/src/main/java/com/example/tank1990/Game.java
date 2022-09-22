@@ -170,7 +170,7 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
 
         if (hud.getLive() == 0 || hud.getCrownLive() == 0) {
             Intent intent = new Intent().setClass(getContext(), GameOverActivity.class);
-            intent.putExtra("Score", hud.getScore());
+            intent.putExtra("score", hud.getScore());
             getContext().startActivity(intent);
         }
     }

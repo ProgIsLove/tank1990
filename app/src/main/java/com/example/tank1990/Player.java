@@ -41,25 +41,19 @@ public class Player extends GameObject {
     @Override
     public void draw(Canvas canvas) {
 
-        //if(getDirection() == 1) {
-        //    Sprite spriteUp = spriteSheet.getSprite(125, 0, 150, 25);
-        //    spriteUp.draw(canvas, getX(), getY());
-        //} else if(getDirection() == 2) {
-        //    Sprite spriteRight = spriteSheet.getSprite(25, 25, 50, 50);
-        //    spriteRight.draw(canvas, getX(), getY());
-        //} else if(getDirection() == 3) {
-        //    Sprite spriteLeft = spriteSheet.getSprite(0, 25, 25, 50);
-        //    spriteLeft.draw(canvas, getX(), getY());
-        //} else if(getDirection() == 4) {
-        //    Sprite spriteDown = spriteSheet.getSprite(50, 25, 75, 50);
-        //    spriteDown.draw(canvas, getX(), getY());
-        //}
-
-        Rect rect = new Rect(getX(), getY(), getX() + gameCon.getTankSize(), getY() + gameCon.getTankSize());
-        Paint p = new Paint();
-        int color = ContextCompat.getColor(getContext(), R.color.teal_700);
-        p.setColor(color);
-        canvas.drawRect(rect, p);
+        if(getDirection() == 1) {
+            Sprite spriteUp = spriteSheet.getSprite(250, 0, 300, 50);
+            spriteUp.draw(canvas, getX(), getY());
+        } else if(getDirection() == 2) {
+            Sprite spriteLeft = spriteSheet.getSprite(50, 50, 100, 100);
+            spriteLeft.draw(canvas, getX(), getY());
+        } else if(getDirection() == 3) {
+            Sprite spriteRight = spriteSheet.getSprite(0, 50, 50, 100);
+            spriteRight.draw(canvas, getX(), getY());
+        } else if(getDirection() == 4) {
+            Sprite spriteDown = spriteSheet.getSprite(100, 50, 150, 100);
+            spriteDown.draw(canvas, getX(), getY());
+        }
     }
 
     @Override

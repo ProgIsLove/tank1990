@@ -33,7 +33,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view_title"
-        app:layout_constraintVertical_bias="0.061" />
+        app:layout_constraintVertical_bias="0.050" />
 
     <Button
         android:id="@+id/btn_scores"
@@ -42,10 +42,9 @@
         android:text="@string/high_scores"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.499"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_play"
-        app:layout_constraintVertical_bias="0.14" />
+        app:layout_constraintVertical_bias="0.0100" />
 
     <Button
         android:id="@+id/btn_about"
@@ -56,5 +55,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_scores"
-        app:layout_constraintVertical_bias="0.325" />
+        app:layout_constraintVertical_bias="0.0150" />
+
+    <Button
+        android:id="@+id/btn_end"
+        android:layout_width="135dp"
+        android:layout_height="55dp"
+        android:text="@string/quit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_about"
+        app:layout_constraintVertical_bias="0.0200" />
 </androidx.constraintlayout.widget.ConstraintLayout>
