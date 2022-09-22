@@ -16,7 +16,6 @@ import androidx.annotation.NonNull;
 public class Game extends SurfaceView implements SurfaceHolder.Callback {
 
     private GameLoop gameLoop;
-    private Performance performance;
     private final Handler handler;
     private GameConstant gameConstant;
     private final Hud hud;
@@ -37,7 +36,6 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
         surfaceHolder.addCallback(this);
 
         gameLoop = new GameLoop(this, surfaceHolder);
-        performance = new Performance(gameLoop, context);
 
         handler = new Handler();
         gameConstant = new GameConstant();
