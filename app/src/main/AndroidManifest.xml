@@ -10,9 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Tank1990">
         <activity
-            android:name=".GameOverActivity"
+            android:name=".NewScoreActivity"
             android:exported="false"
             android:screenOrientation="landscape"/>
+        <activity
+            android:name=".GameOverActivity"
+            android:exported="false"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".AboutActivity"
             android:exported="false" />

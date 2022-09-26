@@ -32,7 +32,7 @@ public class GameOverActivity extends AppCompatActivity {
         });
 
         Button exitBtn = findViewById(R.id.btn_quit);
-        exitBtn.setOnClickListener((View v) -> finish());
+        exitBtn.setOnClickListener((View v) -> finishAffinity());
     }
 
     private void playAgain() {

@@ -9,4 +9,8 @@
     <string name="play_again">Play Again</string>
     <string name="exit_game">Exit Game</string>
     <string name="quit">Quit</string>
+    <string name="new_high_score">New High Score</string>
+    <string name="your_name">Your name</string>
+    <string name="submit">Submit</string>
+    <string name="description">Tank 1990 je akční arkádová hra, kterou jsem si vybral pro svůj projekt. Pravidla hry jsou jednoduchá. Hrač ovláda tank, který ničí ostatní tanky pomocí raket. Za každé úspěšné zničení se hračí přičtou body. Pokud ovšem nepřátelský tank trefi tank hračé příjde o 1 ze 3 životu. Jestli hráč ztratí všechny životy nebo nepřítel zničí korunu hra končí. Hra je šíleně návyková nedoporučuje se hrát během zkouškového období.</string>
 </resources>

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "924642546553",
+    "firebase_url": "https://tank1990-debbd-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "tank1990-debbd",
+    "storage_bucket": "tank1990-debbd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:924642546553:android:f29251a8664955e791d5a8",
+        "android_client_info": {
+          "package_name": "com.example.tank1990"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "924642546553-j97u6dusmr63f9htk2sh9bjqoj5uumbf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8UnYSKxVs8oRMBXRRyUlKVvM20KERzm4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "924642546553-j97u6dusmr63f9htk2sh9bjqoj5uumbf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

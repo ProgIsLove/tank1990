@@ -9,8 +9,8 @@
 
     <TextView
         android:id="@+id/view_title"
-        android:layout_width="342dp"
-        android:layout_height="71dp"
+        android:layout_width="340dp"
+        android:layout_height="70dp"
         android:text="@string/end"
         android:textAlignment="center"
         android:textAllCaps="true"
