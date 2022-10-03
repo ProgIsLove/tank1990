@@ -14,6 +14,8 @@ import java.util.Locale;
 
 public class NewScoreActivity extends AppCompatActivity {
 
+    private Integer scoreValue = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,8 +26,8 @@ public class NewScoreActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         if (intent != null) {
-            Integer value = intent.getIntExtra("score", 0);
-            scoreView.setText(String.format(Locale.ENGLISH, "%d", value));
+            scoreValue = intent.getIntExtra("score", 0);
+            scoreView.setText(String.format(Locale.ENGLISH, "%d", scoreValue));
         }
 
         Button btn = findViewById(R.id.btn_submit);
@@ -39,12 +41,13 @@ public class NewScoreActivity extends AppCompatActivity {
             }).addOnFailureListener(error -> {
                 Toast.makeText(this, String.format(Locale.ENGLISH, "%s", error.getMessage()), Toast.LENGTH_LONG).show();
             });
-            gameOverActivity();
+            gameOverActivity(scoreValue);
         });
     }
 
-    private void gameOverActivity() {
+    private void gameOverActivity(Integer score) {
         Intent intent = new Intent(this, GameOverActivity.class);
+        intent.putExtra("score", score);
         startActivity(intent);
     }
 }
