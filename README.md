@@ -11,6 +11,8 @@ The following items should be installed in your system:
  
  1) Enjoy <3
  
- <img alt="section" src="https://imgur.com/a/UrGGcVp">
+ <img alt="section" src="https://imgur.com/7E20okr.png">
+ 
+ 
  
  
